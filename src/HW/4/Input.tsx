@@ -1,12 +1,13 @@
+import React from 'react';
+
 type InputPropsType = {
 	currentText: string // НУЖНО ПРОТИПИЗИРОВАТЬ
-	setCurrentText: any // НУЖНО ПРОТИПИЗИРОВАТЬ
+	setCurrentText: (arg: string) => void // НУЖНО ПРОТИПИЗИРОВАТЬ
 };
 
 export const Input = ({setCurrentText, currentText}: InputPropsType) => {
-	const onChangeHandler = (event: Parameters<NonNullable<React.ComponentProps<"input">["onChange"]>>[0]) => {
-		// НУЖНО ДОПИСАТЬ
-		setCurrentText(event.target.value);
+	const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+		setCurrentText(event.currentTarget.value);
 	};
 
 	return (

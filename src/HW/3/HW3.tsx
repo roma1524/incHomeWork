@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import {ChangeEventHandler, useState} from 'react';
 
 export const HW3 = () => {
   // 1️⃣ Раскомментируйте JSX(HW3.tsx) и вы увидите,
@@ -16,27 +16,26 @@ export const HW3 = () => {
     'То, что вы делаете по ночам, то и делает вас богатым. (Аль Капоне)',
   ]);
 
-  const handleChange = (event: Parameters<NonNullable<React.ComponentProps<"input">["onChange"]>>[0] ) => {  //'НУЖНО ПРОТИПИЗИРОВАТЬ'
-    setCurrentText(event.target.value);
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setCurrentText(event.currentTarget.value);
   };
 
   const handleSave = () => {
-    // ЗАСЕТАТЬ БЫ ТЕКСТ В texts И НЕ ПОТЕРЯТЬ НАПУТСТВИЕ ИЗ ПРОШЛОГО ВЕКА)
-    // А ЗАТЕМ УБРАТЬ ЗА СОБОЙ В currentText   
-    setTexts(texts => [currentText, ...texts]);
-    setCurrentText('');
+      setTexts([currentText, ...texts]);
+      setCurrentText('');
   };
 
   return (
     <div id={'hw03'}>
       {currentText ? (
-        <h1 id={'hw03-text'}>ЗДЕСЬ ХОТЕЛОСЬ БЫ УВИДЕТЬ ВВОДИМЫЙ ТЕКСТ</h1>) : (
+        <h1 id={'hw03-text'}>ЗДЕСЬ ХОТЕЛОСЬ БЫ УВИДЕТЬ ВВОДИМЫЙ ТЕКСТ</h1>
+      ) : (
         <h1 id={'hw03-default-text'}>Здесь появится новое дело</h1> // ничего не меняем, здесь все норм
       )}
 
       <input id={'hw03-input'} type="text" value={currentText} onChange={(event) => handleChange(event)} />
 
-      <button id={'hw03-button'} onClick={handleSave}>                                
+      <button id={'hw03-button'} onClick={handleSave}>
         Сохранить
       </button>
 
