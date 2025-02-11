@@ -15,15 +15,12 @@ export const pureAddUser = (name: string, setError: any, setName: any, addUserCa
         addUserCallback(editedName)
         setName('')
     }
-    // если имя пустое - показать ошибку, иначе - добавить юзера и очистить инпут
 }
-
 export const pureOnBlur = (name: string, setError: any) => { // если имя пустое - показать ошибку
     if(name.trim() === '') {
         setError('Ошибка! Введите имя!')
     }
 }
-
 export const pureOnEnter = (e: KeyboardEvent | React.KeyboardEvent, addUser: any) => {// если нажата кнопка Enter - добавить
     if(e.keyCode === 13) {
         addUser()

@@ -12,7 +12,6 @@ type GreetingPropsType = {
     lastUserName?: string // need to fix any
 }
 
-// презентационная компонента (для верстальщика)
 const Greeting: React.FC<GreetingPropsType> = (
     {
         name,
@@ -25,7 +24,11 @@ const Greeting: React.FC<GreetingPropsType> = (
         lastUserName,
     } // деструктуризация пропсов
 ) => {
+
+
     const inputClass = error ? s.errorInput : s.input // need to fix with (?:)
+
+
 
     return (
         <div id={'hw3-form'} className={s.greetingForm}>
