@@ -9,13 +9,15 @@
 .hw {
     display: flex;
     flex-direction: column;
+    gap: 16px;
+    min-height: 373px;
     padding: 25px 70px 30px 70px;
     border: 1px solid rgb(217, 217, 217);
     border-radius: 10px;
 }
 
 .hwTitle {
-
+    margin-top: 70px;
     color: rgb(0, 0, 0);
     font-family: Montserrat, sans-serif;
     font-size: 22px;
