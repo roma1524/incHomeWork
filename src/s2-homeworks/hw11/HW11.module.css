@@ -1,8 +1,13 @@
 .container {
+    max-width: 250px;
 }
 
 .wrapper {
+    display: flex;
+    gap: 20px;
 }
 
 .number {
+    color: black;
+    font-weight: bold;
 }
