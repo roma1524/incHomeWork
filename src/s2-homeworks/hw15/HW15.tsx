@@ -52,11 +52,15 @@ const HW15 = () => {
         getTechs(params)
             .then((res) => {
                 // делает студент
-
+                if(res?.data) {
+                    setTechs(res.data.techs)
+                }
                 // сохранить пришедшие данные
 
                 //
-            })
+            }).finally(() => {
+                setLoading(false)
+        })
     }
 
     const onChangePagination = (newPage: number, newCount: number) => {
