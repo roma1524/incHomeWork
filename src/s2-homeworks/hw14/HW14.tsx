@@ -32,30 +32,30 @@ const HW14 = () => {
 
     const sendQuery = (value: string) => {
         setLoading(true)
+        setTechs([])
         getTechs(value)
             .then((res) => {
-                // делает студент
-
-                // сохранить пришедшие данные
-
-                //
+                if (res?.data?.techs) {
+                    setTechs(res.data.techs)
+                }
+            })
+            .finally(() => {
+                setLoading(false)
             })
     }
 
     const onChangeText = (value: string) => {
-        setFind(value)
-        // делает студент
-
-        // добавить/заменить значение в квери урла
-        // setSearchParams(
-
-        //
+        if (value !== find) { // Только если значение изменилось
+            setFind(value)
+            setSearchParams(value ? { find: value } : {})
+        }
     }
 
     useEffect(() => {
         const params = Object.fromEntries(searchParams)
-        sendQuery(params.find || '')
-        setFind(params.find || '')
+        const initialValue = params.find || ''
+        setFind(initialValue)
+        sendQuery(initialValue)
     }, [])
 
     const mappedTechs = techs.map(t => (
@@ -79,7 +79,6 @@ const HW14 = () => {
                 <div id={'hw14-loading'} className={s.loading}>
                     {isLoading ? '...ищем' : <br/>}
                 </div>
-
                 {mappedTechs}
             </div>
         </div>
